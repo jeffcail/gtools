@@ -30,13 +30,13 @@ func (g *GMap) Has(key string) bool {
 
 func (g *GMap) Delete(key string) {
 	g.l.Lock()
-	defer g.l.RUnlock()
+	defer g.l.Unlock()
 	delete(g.M, key)
 }
 
 func (g *GMap) Get(key string) interface{} {
 	g.l.RLock()
-	defer g.l.Unlock()
+	defer g.l.RUnlock()
 	if v, ok := g.M[key]; ok {
 		return v
 	}

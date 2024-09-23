@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func toString(i interface{}) (string, error) {
+func ToString(i interface{}) (string, error) {
 	i = indirectToStringerOrError(i)
 
 	switch s := i.(type) {

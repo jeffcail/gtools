@@ -40,7 +40,7 @@ func Get(url string, header map[string]string, params map[string]interface{}) ([
 	q := req.URL.Query()
 	if params != nil {
 		for Key, val := range params {
-			v, _ := toString(val)
+			v, _ := ToString(val)
 			q.Add(Key, v)
 		}
 		req.URL.RawQuery = q.Encode()
