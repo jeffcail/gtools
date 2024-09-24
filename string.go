@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"reflect"
 	"strconv"
+	"strings"
 )
 
 func ToString(i interface{}) (string, error) {
@@ -75,4 +76,13 @@ func indirectToStringerOrError(a interface{}) interface{} {
 		v = v.Elem()
 	}
 	return v.Interface()
+}
+
+// CompactStr compact more string
+func CompactStr(str ...string) string {
+	var builder strings.Builder
+	for _, s := range str {
+		builder.WriteString(s)
+	}
+	return builder.String()
 }
