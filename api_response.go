@@ -34,7 +34,7 @@ func (r *result) ResponseSuccess(traceId, message string, data ...interface{}) *
 	}
 }
 
-func (r *result) ResponseError(code int, traceId, message string, data ...interface{}) *result {
+func (r *result) ResponseError(traceId string, code int, message string, data ...interface{}) *result {
 	var d interface{}
 	if data != nil {
 		d = data[0]
@@ -55,11 +55,11 @@ func (r *result) ResponseError(code int, traceId, message string, data ...interf
 var ResponsePage *pageList
 
 type pageList struct {
-	Total int64       `json:"total"`
+	Total int         `json:"total"`
 	List  interface{} `json:"list"`
 }
 
-func (p *pageList) Pagination(count int64, list interface{}) *pageList {
+func (p *pageList) Pagination(count int, list interface{}) *pageList {
 	return &pageList{
 		Total: count,
 		List:  list,
